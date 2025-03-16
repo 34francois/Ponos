@@ -34,10 +34,6 @@ def questionnaire_orientation():
     st.title("Questionnaire d'Orientation Professionnelle")
     st.write("Réponds à ces questions pour découvrir les métiers qui te correspondent.")
 
-    if "questionnaire_responses" not in st.session_state:
-        st.session_state.questionnaire_responses = {}
-
-
     # Questions
     questions = {
         "Aimes-tu les mathématiques et la résolution de problèmes ?": ["Oui", "Non"],
@@ -48,15 +44,14 @@ def questionnaire_orientation():
     }
 
     reponses = {}
-    # Display questions and store responses in st.session_state
     for question, options in questions.items():
-        st.session_state.reponses[question] = st.radio(question, options, key=question)
+        reponses[question] = st.radio(question, options)
 
     # Analyse des réponses
     metiers_suggeres = []
-    if st.session_state.reponses.get("Aimes-tu les mathématiques et la résolution de problèmes ?", "") == "Oui":
+    if reponses["Aimes-tu les mathématiques et la résolution de problèmes ?"] == "Oui":
         metiers_suggeres.extend(["Ingénieur", "Informaticien", "Scientifique"])
-    if st.session_state.reponses.get("Préfères-tu les activités créatives ?", "") == "Oui":
+    if reponses["Préfères-tu les activités créatives ?"] == "Oui":
         metiers_suggeres.extend(["Artiste", "Designer", "Musicien"])
     if reponses["Aimes-tu travailler en équipe ?"] == "Oui":
         metiers_suggeres.extend(["Manager", "Enseignant", "Infirmier"])
@@ -64,10 +59,8 @@ def questionnaire_orientation():
         metiers_suggeres.extend(["Développeur web", "Data scientist", "Cybersecurity analyst"])
     if reponses["Aimes-tu aider les autres ?"] == "Oui":
         metiers_suggeres.extend(["Médecin", "Assistant social", "Psychologue"])
-    return metiers_suggeres
 
-# Résultats
-def questionnaire_orientation_resultat():
+    # Résultats
     st.header("Résultats")
     if metiers_suggeres:
         st.write("En fonction de tes réponses, les métiers suivants pourraient te correspondre :")
@@ -83,7 +76,7 @@ def questionnaire_orientation_resultat():
 
 with st.sidebar:
   st.header("Charger une base de donnée")
-  questionnaire_orientation()
+
 
 
 
@@ -95,8 +88,7 @@ with st.sidebar:
 
 if page == "Univers professionnels":
   st.header("Univers professionnels")
-  metiers_suggeres = questionnaire_orientation()
-  questionnaire_orientation_resultat(metiers_suggeres)
+  questionnaire_orientation()
 
 
 
