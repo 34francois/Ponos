@@ -61,7 +61,7 @@ def questionnaire_orientation():
         metiers_suggeres.extend(["Médecin", "Assistant social", "Psychologue"])
 
 # Résultats
-def questionnaire_orientation_resultat():
+def questionnaire_orientation_resultat(metiers_suggeres):
     st.header("Résultats")
     if metiers_suggeres:
         st.write("En fonction de tes réponses, les métiers suivants pourraient te correspondre :")
