@@ -62,7 +62,7 @@ def questionnaire_orientation():
     return metiers_suggeres
 
 # Résultats
-def questionnaire_orientation_resultat(metiers_suggeres):
+def questionnaire_orientation_resultat():
     st.header("Résultats")
     if metiers_suggeres:
         st.write("En fonction de tes réponses, les métiers suivants pourraient te correspondre :")
