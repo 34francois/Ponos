@@ -34,6 +34,20 @@ page = st_navbar(pages, styles=styles)
 #---------------------------------------DEF
 
 
+#SIDEBAR----------------------------------
+
+with st.sidebar:
+  st.header("Charger une base de donnée")
+
+
+
+
+#----------------------------------SIDEBAR
+
+
+
+
+
 if page == "Univers professionnels":
   st.header("Univers professionnels")
 
