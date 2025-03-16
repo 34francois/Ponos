@@ -90,6 +90,7 @@ with st.sidebar:
 
 if page == "Univers professionnels":
   st.header("Univers professionnels")
+  metiers_suggeres = questionnaire_orientation()
   questionnaire_orientation_resultat(metiers_suggeres)
 
 
