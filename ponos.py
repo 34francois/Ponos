@@ -48,18 +48,15 @@ def questionnaire_orientation():
     }
 
     reponses = {}
-    # Display questions and store responses
+    # Display questions and store responses in st.session_state
     for question, options in questions.items():
-        st.session_state.questionnaire_responses[question] = st.radio(
-            question, options, key=f"radio_{question}"
-        )
+        st.session_state.reponses[question] = st.radio(question, options, key=question)
 
     # Analyse des réponses
     metiers_suggeres = []
-    for question, answer in st.session_state.questionnaire_responses.items():
-        if question == "Aimes-tu les mathématiques et la résolution de problèmes ?" and answer == "Oui":
-            metiers_suggeres.extend(["Ingénieur", "Informaticien", "Scientifique"])
-    if reponses["Préfères-tu les activités créatives ?"] == "Oui":
+    if st.session_state.reponses.get("Aimes-tu les mathématiques et la résolution de problèmes ?", "") == "Oui":
+        metiers_suggeres.extend(["Ingénieur", "Informaticien", "Scientifique"])
+    if st.session_state.reponses.get("Préfères-tu les activités créatives ?", "") == "Oui":
         metiers_suggeres.extend(["Artiste", "Designer", "Musicien"])
     if reponses["Aimes-tu travailler en équipe ?"] == "Oui":
         metiers_suggeres.extend(["Manager", "Enseignant", "Infirmier"])
