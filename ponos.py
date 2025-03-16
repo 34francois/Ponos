@@ -60,7 +60,8 @@ def questionnaire_orientation():
     if reponses["Aimes-tu aider les autres ?"] == "Oui":
         metiers_suggeres.extend(["Médecin", "Assistant social", "Psychologue"])
 
-    # Résultats
+# Résultats
+def questionnaire_orientation_resultat():
     st.header("Résultats")
     if metiers_suggeres:
         st.write("En fonction de tes réponses, les métiers suivants pourraient te correspondre :")
@@ -76,7 +77,7 @@ def questionnaire_orientation():
 
 with st.sidebar:
   st.header("Charger une base de donnée")
-
+  questionnaire_orientation()
 
 
 
@@ -88,7 +89,7 @@ with st.sidebar:
 
 if page == "Univers professionnels":
   st.header("Univers professionnels")
-  questionnaire_orientation()
+  questionnaire_orientation_resultat()
 
 
 
