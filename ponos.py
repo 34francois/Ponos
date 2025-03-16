@@ -59,6 +59,7 @@ def questionnaire_orientation():
         metiers_suggeres.extend(["Développeur web", "Data scientist", "Cybersecurity analyst"])
     if reponses["Aimes-tu aider les autres ?"] == "Oui":
         metiers_suggeres.extend(["Médecin", "Assistant social", "Psychologue"])
+    return metiers_suggeres
 
 # Résultats
 def questionnaire_orientation_resultat(metiers_suggeres):
