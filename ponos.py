@@ -30,6 +30,44 @@ page = st_navbar(pages, styles=styles)
 
 #DEF--------------------------------------
 
+def questionnaire_orientation():
+    st.title("Questionnaire d'Orientation Professionnelle")
+    st.write("Réponds à ces questions pour découvrir les métiers qui te correspondent.")
+
+    # Questions
+    questions = {
+        "Aimes-tu les mathématiques et la résolution de problèmes ?": ["Oui", "Non"],
+        "Préfères-tu les activités créatives ?": ["Oui", "Non"],
+        "Aimes-tu travailler en équipe ?": ["Oui", "Non"],
+        "Es-tu à l'aise avec les nouvelles technologies ?": ["Oui", "Non"],
+        "Aimes-tu aider les autres ?": ["Oui", "Non"],
+    }
+
+    reponses = {}
+    for question, options in questions.items():
+        reponses[question] = st.radio(question, options)
+
+    # Analyse des réponses
+    metiers_suggeres = []
+    if reponses["Aimes-tu les mathématiques et la résolution de problèmes ?"] == "Oui":
+        metiers_suggeres.extend(["Ingénieur", "Informaticien", "Scientifique"])
+    if reponses["Préfères-tu les activités créatives ?"] == "Oui":
+        metiers_suggeres.extend(["Artiste", "Designer", "Musicien"])
+    if reponses["Aimes-tu travailler en équipe ?"] == "Oui":
+        metiers_suggeres.extend(["Manager", "Enseignant", "Infirmier"])
+    if reponses["Es-tu à l'aise avec les nouvelles technologies ?"] == "Oui":
+        metiers_suggeres.extend(["Développeur web", "Data scientist", "Cybersecurity analyst"])
+    if reponses["Aimes-tu aider les autres ?"] == "Oui":
+        metiers_suggeres.extend(["Médecin", "Assistant social", "Psychologue"])
+
+    # Résultats
+    st.header("Résultats")
+    if metiers_suggeres:
+        st.write("En fonction de tes réponses, les métiers suivants pourraient te correspondre :")
+        for metier in metiers_suggeres:
+            st.write(f"- {metier}")
+    else:
+        st.write("Nous n'avons pas pu trouver de métiers correspondant à tes réponses. Essaye de répondre à plus de questions.")
 
 #---------------------------------------DEF
 
@@ -50,9 +88,7 @@ with st.sidebar:
 
 if page == "Univers professionnels":
   st.header("Univers professionnels")
-
-
-
+  questionnaire_orientation()
 
 
 
